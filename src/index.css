@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: braked;
+    src: url('/BRAKED.otf');
+}
+
+@font-face {
+    font-family: rej;
+    src: url('/Rejouice-Headline.woff2');
+}
+
+
+:root{
+    --dark: white;
+}
+
+
+*{
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: rej;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+    color: var(--dark);
+}
+span, a{
+    display: inline-block;
+}
+
+input, button{
+    outline: none;
+    border: none;
+}
+
+.blackColorTheme h1, .blackColorTheme p, .blackColorTheme h4, .blackColorTheme h3, .blackColorTheme p, .blackColorTheme div, .blackColorTheme span{color: black}
+footer h1, footer p, footer a, footer h4, footer h3, footer p, footer div, footer span{color: black; font-family: rej;}
+.page8 h1, .page8 p, .page8 h4, .page8 h3, .page8 p, .page8 div, .page8 span{font-family: rej;}
+
+.sidebarNav .active::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: black;
+}
+.navlinks .active::after{
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: black;
+}
+
+
+.page3Heading{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
