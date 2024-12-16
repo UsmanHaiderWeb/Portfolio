@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
-import Page7SkillComponent from './Page7SkillComponent'
-import FresherDes from './FresherDes'
+import Page7SkillComponent from '../Page7SkillComponent'
+import FresherDes from '../FresherDes'
 
-const Page7 = () => {
+const SkillsPage = () => {
   return (
     <div className='w-full flex justify-between items-start sm:flex-nowrap flex-wrap sm:pl-[6.5vw] sm:pr-[10vw] px-[5vw] pt-6 pb-20 relative'>
       <div className='sm:w-auto w-full'>
@@ -24,4 +24,4 @@ const Page7 = () => {
   )
 }
 
-export default memo(Page7)
+export default memo(SkillsPage);

@@ -14,4 +14,4 @@ const Page8EDUcomponent = (i) => {
   )
 }
 
-export default memo(Page8EDUcomponent)
+export default memo(Page8EDUcomponent);

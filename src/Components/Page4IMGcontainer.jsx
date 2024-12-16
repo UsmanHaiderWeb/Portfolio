@@ -9,29 +9,36 @@ const Page4IMGcontainer = (i) => {
   const prize = useRef()
   useGSAP(() => {
     function imgAnimation(a, b) {
-        gsap.from(b, {
+        let tl = gsap.timeline({scrollTrigger: {
+            trigger: a,
+            scroller: "body",
+            start: "top 50%",
+            end: "top 10%",
+            scrub: 1,
+        }});
+        tl.from(b, {
             width: 0,
             height: 0,
             ease: 'back.out',
-            scrollTrigger: {
-                trigger: a,
-                scroller: "body",
-                start: "top 50%",
-                end: "top 10%",
-                scrub: 1,
-            }
-        })
+            // scrollTrigger: {
+            //     trigger: a,
+            //     scroller: "body",
+            //     start: "top 50%",
+            //     end: "top 10%",
+            //     scrub: 1,
+            // }
+        }, 'same')
         let img = a.querySelector("img")
-        gsap.from(img, {
+        tl.from(img, {
             scale: 2.2,
-            scrollTrigger: {
-                trigger: a,
-                scroller: "body",
-                start: "top 50%",
-                end: "top 10%",
-                scrub: 1
-            }
-        })
+            // scrollTrigger: {
+            //     trigger: a,
+            //     scroller: "body",
+            //     start: "top 50%",
+            //     end: "top 10%",
+            //     scrub: 1
+            // }
+        }, 'same')
     }
     imgAnimation(imageCon.current, container.current)
     function prizeAnimation(a, b){

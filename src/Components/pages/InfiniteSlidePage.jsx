@@ -1,9 +1,9 @@
 import React, { memo, useRef } from 'react'
-import Page2InfiniteSlider from './Page2InfiniteSlider'
+import Page2InfiniteSlider from '../Page2InfiniteSlider'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
-const Page2 = (i) => {
+const InfiniteSlidePage = (i) => {
   const sliderCon = useRef()
   const line1 = useRef()
   const line2 = useRef()
@@ -14,7 +14,7 @@ const Page2 = (i) => {
     gsap.from(sliderCon.current, {
       scale: 10,
       scrollTrigger: {
-        trigger: i.page2Animator.current,
+        trigger: i.infiniteSliderAnimator.current,
         scroller: "body",
         scrub: 1,
         start: 'top 100%',
@@ -22,7 +22,7 @@ const Page2 = (i) => {
       }
     })
     const tl = gsap.timeline({scrollTrigger: {
-      trigger: i.page2Animator.current,
+      trigger: i.infiniteSliderAnimator.current,
       scroller :"body",
       start: "top 0",
       end: "top -100%",
@@ -52,19 +52,19 @@ const Page2 = (i) => {
       </h2>
       <div>
         <div ref={sliderCon} className='origin-center bg-zinc-950'>
-          <div ref={line1} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 translate-x-[15%]'>
+          <div ref={line1} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%]'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line2} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 translate-x-[-15%]'>
+          <div ref={line2} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[-15%]'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line3} className='flex justify-start items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5'>
+          <div ref={line3} className='flex justify-start items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line4} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 translate-x-[15%]'>
+          <div ref={line4} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%]'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
@@ -74,4 +74,4 @@ const Page2 = (i) => {
   </>)
 }
 
-export default memo(Page2)
+export default memo(InfiniteSlidePage)

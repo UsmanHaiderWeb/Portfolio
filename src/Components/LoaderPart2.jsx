@@ -9,7 +9,7 @@ const LoaderPart2 = (i) => {
             y: `${i.plus}150%`,
             stagger: 0.08,
             duration: 1,
-            delay: 4.5,
+            delay: 2.5,
         })
     })
 return (
@@ -21,19 +21,17 @@ return (
         <div className='w-20 h-full bg-black'></div>
         <div className='w-20 h-full bg-black'></div>
         <div className='w-20 h-full bg-black'></div>
-        <div className='w-20 h-full bg-black'></div>
-        {window.innerWidth > 600 && <>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-            <div className='w-20 h-full bg-black'></div>
-        </>}
+        <div className='w-20 h-full bg-black micro:hidden mobile:hidden'></div>
+        <div className='w-20 h-full bg-black micro:hidden mobile:hidden'></div>
+        <div className='w-20 h-full bg-black micro:hidden mobile:hidden'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
+        <div className='w-20 h-full bg-black hidden sm:block'></div>
     </div>
   )
 }

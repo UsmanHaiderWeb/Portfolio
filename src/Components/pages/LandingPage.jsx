@@ -1,5 +1,5 @@
 import React , { memo } from 'react'
-import HandleResume from './HandleResume'
+import HandleResume from '../HandleResume'
 
 const LandingPage = () => {
   return (
@@ -13,7 +13,7 @@ const LandingPage = () => {
       <HandleResume rounded='xl' />
       <div className='absolute left-10 bottom-5 mini:left-5 mobile:left-5 micro:left-3 micro:bottom-2 opacity-75'>
         <h4 className='font-["rej"] text-[17px]'>Usman Haider</h4>
-        <p className='w-80 mobile:w-64 micro:w-[80vw] micro:text-[15px] sm:my-[6px]'>I'm a web developer, seeking for an internship to start my job career. I am very dedicated to my tasks.</p>
+        <p className='w-80 mobile:w-64 micro:w-[80vw] micro:text-[13px] mobile:text-[14px] sm:my-[6px]'>I'm a web developer, seeking for an internship to kick start my job career. I am very dedicated to my tasks.</p>
       </div>
       <div className='absolute right-10 bottom-10 opacity-75'>
         <p className='text-[14px] text-right hidden sm:block lgtab:block'>Scroll Down <br /> To See Magic</p>

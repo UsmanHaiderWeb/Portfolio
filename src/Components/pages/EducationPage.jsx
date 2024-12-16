@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
-import Page8EDUcomponent from './Page8EDUcomponent'
-import FresherDes from './FresherDes'
+import Page8EDUcomponent from '../Page8EDUcomponent'
+import FresherDes from '../FresherDes'
 
-const Page8 = () => {
+const EducationPage = () => {
   return (<>
     <div className='page8 flex justify-between items-start sm:flex-nowrap flex-wrap px-[5vw] pt-5 relative gap-y-5'>
       <div className='w-full sm:w-auto'>
@@ -21,4 +21,4 @@ const Page8 = () => {
   </>)
 }
 
-export default memo(Page8)
+export default memo(EducationPage)

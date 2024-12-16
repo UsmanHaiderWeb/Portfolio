@@ -1,8 +1,8 @@
 import React, { memo } from 'react'
 import Header from './Components/Header'
 import MainContent from './Components/MainContent'
-import Footer from './Components/Footer'
 import Loader from './Components/Loader'
+import Footer from './Components/pages/Footer'
 
 const App = () => {
   return (
@@ -10,7 +10,7 @@ const App = () => {
       <Loader />
       <Header />
       <MainContent />
-      <Footer/>
+      <Footer />
     </div>
   )
 }
