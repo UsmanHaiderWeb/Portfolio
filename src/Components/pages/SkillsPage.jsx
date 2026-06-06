@@ -1,27 +1,130 @@
-import React, { memo } from 'react'
-import Page7SkillComponent from '../Page7SkillComponent'
-import FresherDes from '../FresherDes'
+import React, { memo, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
-const SkillsPage = () => {
+gsap.registerPlugin(ScrollTrigger)
+
+const SKILLS = [
+  {
+    index: '01',
+    category: 'Frontend',
+    tags: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Vite'],
+  },
+  {
+    index: '02',
+    category: 'Animations',
+    tags: ['GSAP', 'ScrollTrigger', 'Framer Motion', 'CSS Animations', 'Three.js'],
+  },
+  {
+    index: '03',
+    category: 'Backend',
+    tags: ['Node.js', 'Express.js', 'REST APIs', 'MongoDB', 'Firebase', 'Socket.io'],
+  },
+  {
+    index: '04',
+    category: 'DevOps & Tools',
+    tags: ['Git', 'GitHub', 'Vercel', 'Netlify', 'Docker', 'Figma', 'VS Code'],
+  },
+]
+
+const SkillGroup = ({ group }) => {
+  const ref = useRef()
+
+  useGSAP(() => {
+    gsap.from(ref.current, {
+      y: 30,
+      opacity: 0,
+      duration: 0.85,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: ref.current,
+        start: 'top 82%',
+        once: true,
+      },
+    })
+  }, { scope: ref })
+
   return (
-    <div className='w-full flex justify-between items-start sm:flex-nowrap flex-wrap sm:pl-[6.5vw] sm:pr-[10vw] px-[5vw] pt-6 pb-20 relative'>
-      <div className='sm:w-auto w-full'>
-        <h1 className='text-black font-["rej"] sm:text-[7vw] sm:leading-[6vw] text-[50px] leading-[60px] mobile:text-[45px] mobile:leading-[55px] micro:text-[38px] micro:leading-[48px] w-[300px] mt-10'>Skills I Have</h1>
-        <div className='flex justify-center items-center gap-x-3 mt-5'>
-          <div className='w-8 h-[2px] bg-zinc-900'></div>
-          <p className='text-black w-[350px]'>I can build ambitious, awesome and driving web experiences that will provide a tremendous experience to your viewers.</p>
+    <div ref={ref} className='py-10 border-t border-zinc-800'>
+      <div className='grid sm:grid-cols-[18%_82%] gap-x-12 gap-y-5'>
+
+        {/* Left — index + category */}
+        <div className='flex sm:flex-col gap-x-4 gap-y-1 pt-0.5'>
+          <span className='font-mono text-[11px] text-muted tracking-[0.2em]'>
+            {group.index}
+          </span>
+          <h3
+            className='font-rej text-white leading-none'
+            style={{ fontSize: 'clamp(1.1rem, 2vw, 1.5rem)' }}
+          >
+            {group.category}
+          </h3>
         </div>
-      </div>
-      <div className='sm:w-[450px]'>
-        <Page7SkillComponent heading="Frontend Development" skills="React JS, Astro JS (framework), Clerk Authentication, JavaScript, (Dom Manipulation), TypeScript (intermediate), React Router Dom, React Query, Apollo Graphql, Axios, Redux JS, Redux ToolKit, Version Control, Git, GitHub, Tailwnd CSS, CSS, HTML5" num="1" />
-        <Page7SkillComponent heading="Animaions" skills="GreenSock Animation Platform (GSAP), Scroll Trigger (Gsap Plugin), Locomotive JS, GSAP and Scroll Trigger with React JS, Framer Motion (Basics)" num="2" />
-        <Page7SkillComponent heading="Backend Development" skills="Node JS, Express JS, Mongoose ODM, Mongo DB, Template Engine (EJS), JWT Authentication, Bcrypt JS, Multer JS, Cloudinary, Clerk Authentication, Socket IO (Basics), Apollo Graphql" num="3" />
-      </div>
-      <div className='w-[350px] mobile:w-[300px] micro:w-[95%] sm:absolute sm:bottom-8 sm:left-10 sm:pt-0 pt-10'>
-        <FresherDes />
+
+        {/* Right — tags */}
+        <div className='flex flex-wrap gap-2'>
+          {group.tags.map(tag => (
+            <span
+              key={tag}
+              className='font-mono text-[11px] text-zinc-400 tracking-widest uppercase border border-zinc-800 px-3 py-1.5 rounded-sm transition-all duration-200 hover:border-accent hover:text-accent hover:bg-accent/5 cursor-default'
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+
       </div>
     </div>
   )
 }
 
-export default memo(SkillsPage);
+const SkillsPage = () => {
+  const titleRef = useRef()
+
+  useGSAP(() => {
+    gsap.from(titleRef.current.children, {
+      y: 24,
+      opacity: 0,
+      stagger: 0.08,
+      duration: 0.9,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: titleRef.current,
+        start: 'top 82%',
+        once: true,
+      },
+    })
+  })
+
+  return (
+    <section
+      id='skills'
+      className='w-full px-8 mobile:px-5 micro:px-3 py-24 border-t border-zinc-800'
+    >
+      {/* Section label + title */}
+      <div ref={titleRef} className='mb-4'>
+        <span className='font-mono text-[10px] text-muted tracking-[0.2em] uppercase block mb-10'>
+          05 / Skills
+        </span>
+        <h2
+          className='font-rej text-white leading-none'
+          style={{ fontSize: 'clamp(2.4rem, 5.5vw, 4.5rem)' }}
+        >
+          Expertise
+        </h2>
+      </div>
+
+      {/* Skill groups */}
+      <div className='mt-12'>
+        {SKILLS.map(group => (
+          <SkillGroup key={group.index} group={group} />
+        ))}
+      </div>
+
+      <div className='border-t border-zinc-800' />
+    </section>
+  )
+}
+
+export default memo(SkillsPage)
