@@ -2,10 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: rej;
-  src: url('/Rejouice-Headline.woff2');
-}
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
 *, *::before, *::after {
   box-sizing: border-box;
@@ -16,22 +13,26 @@ html {
 }
 
 body {
-  background-color: #0a0a0a;
+  background-color: #050505;
   color: #ffffff;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Space Mono', monospace;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Thin accent scrollbar */
-::-webkit-scrollbar       { width: 2px; }
-::-webkit-scrollbar-track { background: #0a0a0a; }
+/* Active noise grain overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: #050505; }
 ::-webkit-scrollbar-thumb { background: #06b6d4; }
-
-/* Inline elements */
-span, a { display: inline-block; }
-
-input, button { outline: none; border: none; background: none; }
-
-/* Clip reveal — used for word-by-word heading reveals */
-.clip-reveal-wrap { overflow: hidden; display: inline-block; }

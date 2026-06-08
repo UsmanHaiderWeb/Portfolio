@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"d:/Node/Portfolio\" status --short)",
+      "Bash(git -C \"d:/Node/Portfolio\" branch --show-current)",
+      "Bash(git -C \"d:/Node/Portfolio\" branch -a)",
+      "Bash(git -C \"d:/Node/Portfolio\" switch -c webgl-revamp)",
+      "Bash(npm install *)",
+      "Bash(git add *)"
+    ]
+  }
+}
