@@ -6,7 +6,13 @@
       "Bash(git -C \"d:/Node/Portfolio\" branch -a)",
       "Bash(git -C \"d:/Node/Portfolio\" switch -c webgl-revamp)",
       "Bash(npm install *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'checkpoint: experimental WebGL scaffolding + R3F/lenis/gsap/zustand deps *)",
+      "Bash(git rm *)",
+      "Bash(echo \"EXIT: $?\")",
+      "Bash(curl -s -o /dev/null -w \"root: HTTP %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(curl -s -o /dev/null -w \"main.jsx: HTTP %{http_code}\\\\n\" http://localhost:5173/src/main.jsx)",
+      "Bash(curl -s http://localhost:5173/src/main.jsx)"
     ]
   }
 }

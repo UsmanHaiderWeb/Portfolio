@@ -13,9 +13,12 @@ module.exports = {
   plugins: ['react-refresh'],
   rules: {
     'react/jsx-no-target-blank': 'off',
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+    // This project does not use prop-types.
+    'react/prop-types': 'off',
+    // React Three Fiber renders three.js objects as JSX; their props (args,
+    // attach, vertexShader, frustumCulled, ...) are not DOM attributes.
+    'react/no-unknown-property': 'off',
+    // memo()-wrapped default exports + co-located subcomponents are intentional.
+    'react-refresh/only-export-components': 'off',
   },
 }
