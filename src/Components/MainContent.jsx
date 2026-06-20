@@ -1,4 +1,4 @@
-import React, { memo , useRef} from 'react'
+import React, { memo, useRef } from 'react'
 import LandingPage from './pages/LandingPage'
 import { useGSAP } from '@gsap/react'
 import gsap from "gsap";
@@ -36,11 +36,11 @@ const MainContent = () => {
       <div className='relative overflow-hidden'>
         <div className='w-full h-screen'>
           <div ref={landingPageAnimator} className='w-full h-screen relative z-[1] pointer-events-none'></div>
-          <div ref={landingpage} className='fixed top-0 left-0 w-full min-h-screen overflow-hidden z-[2] bg-zinc-900' style={{clipPath: "circle(100% at 50% 50%)"}}>
+          <div ref={landingpage} className='fixed top-0 left-0 w-full min-h-screen overflow-hidden z-[2] bg-zinc-900' style={{ clipPath: "circle(100% at 50% 50%)" }}>
             <LandingPage />
           </div>
         </div>
-        <div className='w-full h-screen'>
+        <div className='w-full h-[135vh]'>
           <div ref={infiniteSliderAnimator} className='w-full h-screen relative z-[1] pointer-events-none'></div>
           <div className='w-full h-full bg-zinc-950 min-h-screen fixed top-0 left-0 z-[1] flex justify-center items-center'>
             <InfiniteSlidePage infiniteSliderAnimator={infiniteSliderAnimator} />

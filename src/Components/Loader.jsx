@@ -7,6 +7,7 @@ import LoaderPart2 from './LoaderPart2'
 const Loader = () => {
     const loader = useRef();
     const loader1 = useRef();
+    const hasAnimated = useRef(false);
     const [ fontLoaded, setFontLoadedState ] = useState(false);
 
     useEffect(() => {
@@ -16,22 +17,23 @@ const Loader = () => {
     }, [])
 
     useGSAP(() => {
-        if (fontLoaded) {
-            gsap.to(loader1.current.querySelectorAll("span"), {
+        if (fontLoaded && !hasAnimated.current) {
+            hasAnimated.current = true;
+            const spans = loader1.current.querySelectorAll("span");
+            const tl = gsap.timeline({ delay: 0.3 });
+            tl.to(spans, {
                 opacity: 1,
                 x: -250,
                 stagger: 0.15,
-                duration: 2,
-                delay: .5,
+                duration: 1.8,
                 ease: "elastic.out(1, 0.5)"
             })
-            gsap.to(loader1.current.querySelectorAll("span"), {
+            .to(spans, {
                 opacity: 0,
                 stagger: 0.15,
-                duration: 2,
-                delay: 1.8,
-                ease: "elastic.out(1, 0.5)"
-            })
+                duration: 0.9,
+                ease: "power2.in"
+            }, "+=0.1");
         }
     }, [fontLoaded])
 
