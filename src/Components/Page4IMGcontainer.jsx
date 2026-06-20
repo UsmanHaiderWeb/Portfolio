@@ -8,55 +8,42 @@ const Page4IMGcontainer = (i) => {
   const prizeName = useRef()
   const prize = useRef()
   useGSAP(() => {
-    function imgAnimation(a, b) {
-        let tl = gsap.timeline({scrollTrigger: {
-            trigger: a,
+    // Image + its container reveal — scroll-linked, both tweens share the
+    // same monotonic ease so the box and the image grow in lockstep.
+    function imgAnimation(row, box) {
+        const img = row.querySelector("img")
+        const tl = gsap.timeline({ scrollTrigger: {
+            trigger: row,
             scroller: "body",
             start: "top 50%",
             end: "top 10%",
             scrub: 1,
-        }});
-        tl.from(b, {
-            width: 0,
-            height: 0,
-            ease: 'back.out',
-            // scrollTrigger: {
-            //     trigger: a,
-            //     scroller: "body",
-            //     start: "top 50%",
-            //     end: "top 10%",
-            //     scrub: 1,
-            // }
-        }, 'same')
-        let img = a.querySelector("img")
-        tl.from(img, {
-            scale: 2.2,
-            // scrollTrigger: {
-            //     trigger: a,
-            //     scroller: "body",
-            //     start: "top 50%",
-            //     end: "top 10%",
-            //     scrub: 1
-            // }
-        }, 'same')
+        }})
+        tl.from(box, { width: 0, height: 0, ease: "power2.out" }, "reveal")
+          .from(img, { scale: 2.2, ease: "power2.out" }, "reveal")
     }
-    imgAnimation(imageCon.current, container.current)
-    function prizeAnimation(a, b){
-        gsap.from(a, {
+
+    // Caption (title + subtitle) — staggered, tied to the SAME row and start
+    // as the image so the two lines read as one unit with the reveal.
+    function captionAnimation(row, lines) {
+        gsap.from(lines, {
             opacity: 0,
             x: 250,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power3.out",
             scrollTrigger: {
-                trigger: a,
+                trigger: row,
                 scroller: "body",
-                start: `top ${b}%`,
-                end: "top -500%",
-                toggleActions: "restart reverse restart reverse",
+                start: "top 50%",
+                toggleActions: "play none none reverse",
             }
         })
     }
-    prizeAnimation(prizeName.current, 70)
-    prizeAnimation(prize.current, 70.2)
-})
+
+    imgAnimation(imageCon.current, container.current)
+    captionAnimation(imageCon.current, [prizeName.current, prize.current])
+  })
 
   return (
     <div ref={imageCon} className={`w-full h-[20vw] tablet:h-[22vw] mini:h-[80vw] mobile:h-[85vw] micro:h-[95vw] flex ${i.justify} items-center`}>
