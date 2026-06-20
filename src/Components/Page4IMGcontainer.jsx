@@ -47,7 +47,7 @@ const Page4IMGcontainer = (i) => {
 
   return (
     <div ref={imageCon} className={`w-full h-[20vw] tablet:h-[22vw] mini:h-[80vw] mobile:h-[85vw] micro:h-[95vw] flex ${i.justify} items-center`}>
-        <div className={`w-[40vw] h-[30vw] sm:w-[30vw] sm:h-[20vw] mini:w-full mobile:w-full micro:w-full mini:h-[60vw] mobile:h-[65vw] micro:h-[70vw] relative`}>
+        <div className={`w-1/2 h-[30vw] sm:w-[30vw] sm:h-[20vw] mini:w-full mobile:w-full micro:w-full mini:h-[60vw] mobile:h-[65vw] micro:h-[70vw] relative`}>
             <div ref={container} className={`w-full h-full overflow-hidden absolute top-0 ${i.imgPosition}`}>
                 <img src={i.img} className='w-full h-full object-left object-cover cursor-pointer' onClick={() => location.href = i.link} />
             </div>
