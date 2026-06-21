@@ -5,6 +5,7 @@ import HandleResume from '../HandleResume'
 
 const LandingPage = () => {
   const container = useRef()
+  const tilt = useRef()
 
   // Intro reveal, timed to hand off from the loader curtain (bars open ~3.8s).
   // 1) headline lines rise out from behind their masks
@@ -30,20 +31,47 @@ const LandingPage = () => {
     }, '-=0.5')
   }, { scope: container })
 
+  // 3D tilt: the hero turns to face the cursor (mouse right -> faces right,
+  // up/down tilts accordingly). Smoothed with quickTo, springs back on leave.
+  useGSAP(() => {
+    const el = tilt.current
+    gsap.set(el, { transformPerspective: 900, transformOrigin: 'center center' })
+    const rotX = gsap.quickTo(el, 'rotationX', { duration: 0.8, ease: 'power3.out' })
+    const rotY = gsap.quickTo(el, 'rotationY', { duration: 0.8, ease: 'power3.out' })
+
+    const MAX = 12 // max tilt in degrees
+    const move = (e) => {
+      const nx = (e.clientX / window.innerWidth) * 2 - 1   // -1 left .. 1 right
+      const ny = (e.clientY / window.innerHeight) * 2 - 1  // -1 top  .. 1 bottom
+      rotY(nx * MAX)
+      rotX(-ny * MAX)
+    }
+    const reset = () => { rotX(0); rotY(0) }
+
+    window.addEventListener('mousemove', move)
+    document.addEventListener('mouseleave', reset)
+    return () => {
+      window.removeEventListener('mousemove', move)
+      document.removeEventListener('mouseleave', reset)
+    }
+  })
+
   return (
     <div ref={container} className='min-h-screen w-full flex justify-center items-center relative flex-col'>
-      <h1 className='reveal-up text-[17px] mb-2 mobile:hidden micro:hidden'>I'm Usman Haider</h1>
-      <div className='text-[60px] leading-[60px] tablet:text-[55px] tablet:leading-[55px] mini:text-[47px] mini:leading-[47px] mobile:text-[40px] mobile:leading-[40px] micro:text-[36px] micro:leading-[36px] relative mix-blend-difference'>
-        <div className='overflow-hidden'>
-          <h1 className='reveal-line text-center font-["rej"] mix-blend-difference'>FullStack</h1>
+      <div ref={tilt} className='flex flex-col justify-center items-center will-change-transform'>
+        <h1 className='reveal-up text-[17px] mb-2 mobile:hidden micro:hidden'>I'm Usman Haider</h1>
+        <div className='text-[60px] leading-[60px] tablet:text-[55px] tablet:leading-[55px] mini:text-[47px] mini:leading-[47px] mobile:text-[40px] mobile:leading-[40px] micro:text-[36px] micro:leading-[36px] relative mix-blend-difference'>
+          <div className='overflow-hidden'>
+            <h1 className='reveal-line text-center font-["rej"] mix-blend-difference'>FullStack</h1>
+          </div>
+          <div className='overflow-hidden'>
+            <h1 className='reveal-line text-center font-["rej"] mix-blend-difference'>Mern Developer</h1>
+          </div>
         </div>
-        <div className='overflow-hidden'>
-          <h1 className='reveal-line text-center font-["rej"] mix-blend-difference'>Mern Developer</h1>
+        <p className='reveal-up my-3 w-[500px] tablet:w-[80vw] mini:w-[85vw] mobile:w-[90vw] micro:w-[93vw] text-center text-[18px]'>I focus on creating extreme experiences in my websites. I can create different websites such as ecommerce, animated, social media app, music player etc.</p>
+        <div className='reveal-up'>
+          <HandleResume rounded='xl' />
         </div>
-      </div>
-      <p className='reveal-up my-3 w-[500px] tablet:w-[80vw] mini:w-[85vw] mobile:w-[90vw] micro:w-[93vw] text-center text-[18px]'>I focus on creating extreme experiences in my websites. I can create different websites such as ecommerce, animated, social media app, music player etc.</p>
-      <div className='reveal-up'>
-        <HandleResume rounded='xl' />
       </div>
       <div className='reveal-up absolute left-10 bottom-5 mini:left-5 mobile:left-5 micro:left-3 micro:bottom-2 opacity-75'>
         <h4 className='font-["rej"] text-[17px]'>Usman Haider</h4>
