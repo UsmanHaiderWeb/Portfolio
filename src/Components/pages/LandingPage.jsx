@@ -54,27 +54,28 @@ const LandingPage = () => {
 
   // 3D tilt: the hero turns to face the cursor (mouse right -> faces right,
   // up/down tilts accordingly). Smoothed with quickTo, springs back on leave.
+  // Parallax shift (no tilt): hero glides toward the cursor, the starfield
+  // drifts further in the same direction for depth.
   useGSAP(() => {
     const el = tilt.current
     const gx = galaxy.current
-    gsap.set(el, { transformPerspective: 900, transformOrigin: 'center center' })
-    gsap.set(gx, { transformPerspective: 1200, transformOrigin: 'center center', scale: 1.5 })
+    gsap.set(gx, { transformOrigin: 'center center', scale: 1.5 })
 
-    const rotX = gsap.quickTo(el, 'rotationX', { duration: 0.8, ease: 'power3.out' })
-    const rotY = gsap.quickTo(el, 'rotationY', { duration: 0.8, ease: 'power3.out' })
-    const gRotX = gsap.quickTo(gx, 'rotationX', { duration: 1.2, ease: 'power3.out' })
-    const gRotY = gsap.quickTo(gx, 'rotationY', { duration: 1.2, ease: 'power3.out' })
+    const tx = gsap.quickTo(el, 'x', { duration: 0.8, ease: 'power3.out' })
+    const ty = gsap.quickTo(el, 'y', { duration: 0.8, ease: 'power3.out' })
+    const gTx = gsap.quickTo(gx, 'x', { duration: 1.2, ease: 'power3.out' })
+    const gTy = gsap.quickTo(gx, 'y', { duration: 1.2, ease: 'power3.out' })
 
-    const MAX = 12 // max tilt in degrees
+    const SHIFT = 22 // hero shift in px
     const move = (e) => {
       const nx = (e.clientX / window.innerWidth) * 2 - 1   // -1 left .. 1 right
       const ny = (e.clientY / window.innerHeight) * 2 - 1  // -1 top  .. 1 bottom
-      rotY(nx * MAX)
-      rotX(-ny * MAX)
-      gRotY(nx * MAX * 1.4)   // background tilts the same way, a bit more (depth)
-      gRotX(-ny * MAX * 1.4)
+      tx(nx * SHIFT)
+      ty(ny * SHIFT)
+      gTx(nx * SHIFT * 1.8)   // background drifts further for depth
+      gTy(ny * SHIFT * 1.8)
     }
-    const reset = () => { rotX(0); rotY(0); gRotX(0); gRotY(0) }
+    const reset = () => { tx(0); ty(0); gTx(0); gTy(0) }
 
     window.addEventListener('mousemove', move)
     document.addEventListener('mouseleave', reset)
