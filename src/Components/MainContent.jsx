@@ -46,10 +46,10 @@ const MainContent = () => {
             <InfiniteSlidePage infiniteSliderAnimator={infiniteSliderAnimator} />
           </div>
         </div>
-        <div className='relative z-[15] bg-zinc-900'>
+        <ProjectColumnsPage nextPage={skillsPage} />
+        <div className='relative z-[15] bg-gradient-to-b from-[#18181B] to-[#09090B]'>
           <SideBySideProjectPage />
         </div>
-        <ProjectColumnsPage nextPage={skillsPage} />
         <div ref={skillsPage} className='blackColorTheme relative z-[18] bg-[#09090B] w-full min-h-screen pt-60'>
           <SkillsPage />
         </div>
