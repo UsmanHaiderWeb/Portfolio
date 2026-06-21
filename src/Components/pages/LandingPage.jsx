@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react'
+import React, { memo, useMemo, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 import HandleResume from '../HandleResume'
@@ -6,6 +6,27 @@ import HandleResume from '../HandleResume'
 const LandingPage = () => {
   const container = useRef()
   const tilt = useRef()
+  const galaxy = useRef()
+
+  // Build two star layers as box-shadow dot fields, spread over a generous
+  // area so the scaled/tilted galaxy never reveals an empty edge.
+  const stars = useMemo(() => {
+    const w = window.innerWidth, h = window.innerHeight
+    const r = (s) => Math.round((Math.random() * 1.6 - 0.3) * s)
+    const layer = (n, alphaMin, blur) => Array.from({ length: n }, () =>
+      `${r(w)}px ${r(h)}px ${blur} rgba(255,255,255,${(alphaMin + Math.random() * (1 - alphaMin)).toFixed(2)})`
+    ).join(', ')
+    return { far: layer(220, 0.25, '0px'), near: layer(70, 0.5, '1px') }
+  }, [])
+
+  const nebula = {
+    backgroundColor: '#05060f',
+    backgroundImage: `
+      radial-gradient(ellipse at 20% 30%, rgba(99,52,168,0.35), transparent 55%),
+      radial-gradient(ellipse at 80% 60%, rgba(30,64,175,0.30), transparent 55%),
+      radial-gradient(ellipse at 60% 18%, rgba(168,52,140,0.20), transparent 50%)
+    `,
+  }
 
   // Intro reveal, timed to hand off from the loader curtain (bars open ~3.8s).
   // 1) headline lines rise out from behind their masks
@@ -35,9 +56,17 @@ const LandingPage = () => {
   // up/down tilts accordingly). Smoothed with quickTo, springs back on leave.
   useGSAP(() => {
     const el = tilt.current
+    const gx = galaxy.current
     gsap.set(el, { transformPerspective: 900, transformOrigin: 'center center' })
+    gsap.set(gx, { transformPerspective: 1200, transformOrigin: 'center center', scale: 1.5 })
+
+    // slow continuous spin of the starfield (rotationZ) for a galaxy feel
+    gsap.to(gx, { rotation: 360, duration: 240, ease: 'none', repeat: -1 })
+
     const rotX = gsap.quickTo(el, 'rotationX', { duration: 0.8, ease: 'power3.out' })
     const rotY = gsap.quickTo(el, 'rotationY', { duration: 0.8, ease: 'power3.out' })
+    const gRotX = gsap.quickTo(gx, 'rotationX', { duration: 1.2, ease: 'power3.out' })
+    const gRotY = gsap.quickTo(gx, 'rotationY', { duration: 1.2, ease: 'power3.out' })
 
     const MAX = 12 // max tilt in degrees
     const move = (e) => {
@@ -45,8 +74,10 @@ const LandingPage = () => {
       const ny = (e.clientY / window.innerHeight) * 2 - 1  // -1 top  .. 1 bottom
       rotY(nx * MAX)
       rotX(-ny * MAX)
+      gRotY(nx * MAX * 1.4)   // background tilts the same way, a bit more (depth)
+      gRotX(-ny * MAX * 1.4)
     }
-    const reset = () => { rotX(0); rotY(0) }
+    const reset = () => { rotX(0); rotY(0); gRotX(0); gRotY(0) }
 
     window.addEventListener('mousemove', move)
     document.addEventListener('mouseleave', reset)
@@ -57,8 +88,12 @@ const LandingPage = () => {
   })
 
   return (
-    <div ref={container} className='min-h-screen w-full flex justify-center items-center relative flex-col'>
-      <div ref={tilt} className='flex flex-col justify-center items-center will-change-transform'>
+    <div ref={container} className='min-h-screen w-full flex justify-center items-center relative flex-col overflow-hidden'>
+      <div ref={galaxy} className='absolute inset-0 z-0 pointer-events-none' style={nebula}>
+        <div className='absolute top-0 left-0 rounded-full' style={{ width: 1, height: 1, boxShadow: stars.far }}></div>
+        <div className='absolute top-0 left-0 rounded-full' style={{ width: 2, height: 2, boxShadow: stars.near }}></div>
+      </div>
+      <div ref={tilt} className='relative z-10 flex flex-col justify-center items-center will-change-transform'>
         <h1 className='reveal-up text-[17px] mb-2 mobile:hidden micro:hidden'>I'm Usman Haider</h1>
         <div className='text-[60px] leading-[60px] tablet:text-[55px] tablet:leading-[55px] mini:text-[47px] mini:leading-[47px] mobile:text-[40px] mobile:leading-[40px] micro:text-[36px] micro:leading-[36px] relative mix-blend-difference'>
           <div className='overflow-hidden'>
