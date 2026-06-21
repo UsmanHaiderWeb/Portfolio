@@ -60,9 +60,6 @@ const LandingPage = () => {
     gsap.set(el, { transformPerspective: 900, transformOrigin: 'center center' })
     gsap.set(gx, { transformPerspective: 1200, transformOrigin: 'center center', scale: 1.5 })
 
-    // slow continuous spin of the starfield (rotationZ) for a galaxy feel
-    gsap.to(gx, { rotation: 360, duration: 240, ease: 'none', repeat: -1 })
-
     const rotX = gsap.quickTo(el, 'rotationX', { duration: 0.8, ease: 'power3.out' })
     const rotY = gsap.quickTo(el, 'rotationY', { duration: 0.8, ease: 'power3.out' })
     const gRotX = gsap.quickTo(gx, 'rotationX', { duration: 1.2, ease: 'power3.out' })
