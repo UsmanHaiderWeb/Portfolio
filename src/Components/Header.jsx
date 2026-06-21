@@ -19,6 +19,27 @@ const Header = (i) => {
     })
   })
 
+  // Magnetic hover: the ball drifts toward the cursor and springs back.
+  useGSAP(() => {
+    const el = resumeBall.current
+    const xTo = gsap.quickTo(el, 'x', { duration: 0.6, ease: 'power3.out' })
+    const yTo = gsap.quickTo(el, 'y', { duration: 0.6, ease: 'power3.out' })
+
+    const move = (e) => {
+      const r = el.getBoundingClientRect()
+      xTo((e.clientX - (r.left + r.width / 2)) * 0.4)
+      yTo((e.clientY - (r.top + r.height / 2)) * 0.4)
+    }
+    const reset = () => { xTo(0); yTo(0) }
+
+    el.addEventListener('mousemove', move)
+    el.addEventListener('mouseleave', reset)
+    return () => {
+      el.removeEventListener('mousemove', move)
+      el.removeEventListener('mouseleave', reset)
+    }
+  })
+
   return (
     <header className='fixed top-0 left-0 w-full z-[520]'>
         <nav className='flex justify-between items-center px-10 mobile:px-6 micro:px-2'>
