@@ -66,7 +66,7 @@ const LandingPage = () => {
     const gTx = gsap.quickTo(gx, 'x', { duration: 1.2, ease: 'power3.out' })
     const gTy = gsap.quickTo(gx, 'y', { duration: 1.2, ease: 'power3.out' })
 
-    const SHIFT = 22 // hero shift in px
+    const SHIFT = 8 // hero shift in px — intentionally subtle
     const move = (e) => {
       const nx = (e.clientX / window.innerWidth) * 2 - 1   // -1 left .. 1 right
       const ny = (e.clientY / window.innerHeight) * 2 - 1  // -1 top  .. 1 bottom
