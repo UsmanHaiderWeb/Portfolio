@@ -10,7 +10,11 @@ const LandingPage = () => {
   // 1) headline lines rise out from behind their masks
   // 2) everything else cascades in (fade + rise, staggered)
   useGSAP(() => {
-    const tl = gsap.timeline({ delay: 3.9 })
+    // The curtain (LoaderPart2) has more bars on wider screens, so its
+    // staggered open finishes later there -> hand off a touch later too.
+    const w = window.innerWidth
+    const introDelay = w >= 800 ? 4.4 : w >= 551 ? 4.25 : 4.15
+    const tl = gsap.timeline({ delay: introDelay })
     tl.from('.reveal-line', {
       yPercent: 110,
       duration: 0.9,
