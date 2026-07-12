@@ -1,31 +1,10 @@
-import React, { memo, useRef } from 'react'
+import { memo } from 'react'
 import SingleMajorProject from '../SingleMajorProject'
-import { useGSAP } from '@gsap/react'
-import gsap from "gsap";
-import ScrollTrigger from 'gsap/ScrollTrigger';
 
-const ProjectColumnsPage = ({ nextPage }) => {
-  const bgChanger = useRef();
-
-  // useGSAP(() => {
-  //   gsap.to(bgChanger.current, {
-  //     scrollTrigger: {
-  //       trigger: bgChanger.current,
-  //       scroller: 'body',
-  //       start: 'bottom 60%',
-  //       end: 'bottom 10%',
-  //       onUpdate: (prop) => {
-  //         prop.progress == 0 ? bgChanger.current.style.backgroundColor = "transparent" : bgChanger.current.style.backgroundColor = "#e2e2e2"
-  //         prop.progress == 0 ? nextPage.current.style.backgroundColor = "#09090B" : nextPage.current.style.backgroundColor = "#e2e2e2"
-  //         prop.progress == 1 && ScrollTrigger.refresh();
-  //       }
-  //     }
-  //   })
-  // }, [])
-
+const ProjectColumnsPage = () => {
   return (
     <div className='bg-zinc-900 relative z-[14] pt-[170px] mini:pt-[150px] mobile:pt-[130px] micro:pt-[100px]'>
-      <div ref={bgChanger} className='min-h-[500px]'>
+      <div className='min-h-[500px]'>
         <div className='flex justify-between items-center mx-[4.5vw] border-b-[blue] border-b-[1px] border-b-solid pb-7 lgtab:mb-20 tablet:mb-16 sm:mb-8'>
           <h1 className='w-full lg:w-[50%] sm:w-[70%] lgtab:w-[85%] lg:text-[50px] lg:leading-[60px] sm:text-[50px] sm:leading-[60px] lgtab:text-[45px] lgtab:leading-[55px] tablet:text-[40px] tablet:leading-[50px] mini:text-[36px] mini:leading-[43px] mobile:text-[32px] mobile:leading-[38px] micro:text-[28px] micro:leading-[33px] font-bold mini:text-center mobile:text-center micro:text-center font-["rej"]'>My Major Projects</h1>
           <p className='hidden lg:block w-[32%] text-[19px] leading-[25px] opacity-55'>These projects primarily focuses on the javascript and react concepts and understandings.</p>

@@ -43,13 +43,13 @@ const LandingPage = () => {
       stagger: 0.12,
       ease: 'power4.out',
     })
-    .from('.reveal-up', {
-      y: 24,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: 'power3.out',
-    }, '-=0.5')
+      .from('.reveal-up', {
+        y: 24,
+        opacity: 0,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: 'power3.out',
+      }, '-=0.5')
   }, { scope: container })
 
   // 3D tilt: the hero turns to face the cursor (mouse right -> faces right,
@@ -108,7 +108,7 @@ const LandingPage = () => {
       </div>
       <div className='reveal-up absolute left-10 bottom-5 mini:left-5 mobile:left-5 micro:left-3 micro:bottom-2 opacity-75'>
         <h4 className='font-["rej"] text-[17px]'>Usman Haider</h4>
-        <p className='w-80 mobile:w-64 micro:w-[80vw] micro:text-[13px] mobile:text-[14px] sm:my-[6px]'>I'm a web developer, seeking for an internship to kick start my job career. I am very dedicated to my tasks.</p>
+        <p className='w-80 mobile:w-64 micro:w-[80vw] micro:text-[13px] mobile:text-[14px] sm:my-[6px]'>I'm an experienced Full Stack Engineer specializing in scalable cloud-native backend systems and complex React frontends. I am open to work!</p>
       </div>
       <div className='reveal-up absolute right-10 bottom-10 opacity-75'>
         <p className='text-[14px] text-right hidden sm:block lgtab:block'>Scroll Down <br /> To See Magic</p>
