@@ -92,13 +92,13 @@ const LandingPage = () => {
         <div className='absolute top-0 left-0 rounded-full' style={{ width: 2, height: 2, boxShadow: stars.near }}></div>
       </div>
       <div ref={tilt} className='relative z-10 flex flex-col justify-center items-center will-change-transform'>
-        <h1 className='reveal-up text-[17px] mb-2 mobile:hidden micro:hidden'>I'm Usman Haider</h1>
-        <div className='text-[60px] leading-[60px] tablet:text-[55px] tablet:leading-[55px] mini:text-[47px] mini:leading-[47px] mobile:text-[40px] mobile:leading-[40px] micro:text-[36px] micro:leading-[36px] relative mix-blend-difference'>
+        <h1 className='reveal-up text-[17px] mb-2 mobile:hidden micro:hidden'>{"I'm"} Usman Haider</h1>
+        <div className='text-[60px] leading-[60px] tablet:text-[55px] tablet:leading-[55px] mini:text-[47px] mini:leading-[47px] mobile:text-[40px] mobile:leading-[40px] micro:text-[36px] micro:leading-[36px] relative'>
           <div className='overflow-hidden'>
-            <h1 className='reveal-line text-center font-["rej"] mix-blend-difference'>FullStack</h1>
+            <h1 className='reveal-line text-center font-["rej"]'>FullStack</h1>
           </div>
           <div className='overflow-hidden'>
-            <h1 className='reveal-line text-center font-["rej"] mix-blend-difference'>Mern Developer</h1>
+            <h1 className='reveal-line text-center font-["rej"]'>Mern Developer</h1>
           </div>
         </div>
         <p className='reveal-up my-3 w-[500px] tablet:w-[80vw] mini:w-[85vw] mobile:w-[90vw] micro:w-[93vw] text-center text-[18px]'>I focus on creating extreme experiences in my websites. I can create different websites such as ecommerce, animated, social media app, music player etc.</p>

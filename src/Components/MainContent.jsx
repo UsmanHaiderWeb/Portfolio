@@ -19,17 +19,20 @@ const MainContent = () => {
   gsap.registerPlugin(ScrollTrigger)
 
   useGSAP(() => {
-    gsap.to(landingpage.current, {
-      clipPath: "circle(0% at 50% 50%)",
-      scrollTrigger: {
-        trigger: landingPageAnimator.current,
-        scroller: "body",
-        start: "top 0%",
-        end: 'top -100%',
-        pin: true,
-        scrub: 1,
+    gsap.fromTo(landingpage.current, 
+      { clipPath: "circle(99.9% at 50% 50%)" },
+      {
+        clipPath: "circle(0% at 50% 50%)",
+        scrollTrigger: {
+          trigger: landingPageAnimator.current,
+          scroller: "body",
+          start: "top 0%",
+          end: 'top -100%',
+          pin: true,
+          scrub: 1,
+        }
       }
-    })
+    )
   })
 
   return (
@@ -37,7 +40,7 @@ const MainContent = () => {
       <div className='relative overflow-hidden'>
         <div className='w-full h-screen'>
           <div ref={landingPageAnimator} className='w-full h-screen relative z-[1] pointer-events-none'></div>
-          <div ref={landingpage} className='fixed top-0 left-0 w-full min-h-screen overflow-hidden z-[2] bg-zinc-900 will-change-[clip-path]' style={{ clipPath: "circle(100% at 50% 50%)", transform: 'translateZ(0)' }}>
+          <div ref={landingpage} className='fixed top-0 left-0 w-full min-h-screen overflow-hidden z-[2] bg-zinc-900 will-change-[clip-path]' style={{ clipPath: "circle(99.9% at 50% 50%)", transform: 'translateZ(0)' }}>
             <LandingPage />
           </div>
         </div>
