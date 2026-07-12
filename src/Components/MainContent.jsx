@@ -37,7 +37,7 @@ const MainContent = () => {
       <div className='relative overflow-hidden'>
         <div className='w-full h-screen'>
           <div ref={landingPageAnimator} className='w-full h-screen relative z-[1] pointer-events-none'></div>
-          <div ref={landingpage} className='fixed top-0 left-0 w-full min-h-screen overflow-hidden z-[2] bg-zinc-900' style={{ clipPath: "circle(100% at 50% 50%)" }}>
+          <div ref={landingpage} className='fixed top-0 left-0 w-full min-h-screen overflow-hidden z-[2] bg-zinc-900 will-change-[clip-path]' style={{ clipPath: "circle(100% at 50% 50%)", transform: 'translateZ(0)' }}>
             <LandingPage />
           </div>
         </div>

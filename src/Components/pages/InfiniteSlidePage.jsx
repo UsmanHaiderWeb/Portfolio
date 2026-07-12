@@ -53,20 +53,20 @@ const InfiniteSlidePage = (i) => {
         I'm a modern web developer, trying my best
       </h2>
       <div>
-        <div ref={sliderCon} className='origin-center bg-zinc-950'>
-          <div ref={line1} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%]'>
+        <div ref={sliderCon} className='origin-center bg-zinc-950 will-change-transform'>
+          <div ref={line1} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%] will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line2} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[-15%]'>
+          <div ref={line2} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[-15%] will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line3} className='flex justify-start items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3'>
+          <div ref={line3} className='flex justify-start items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line4} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%]'>
+          <div ref={line4} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%] will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
