@@ -8,6 +8,7 @@ import SideBySideProjectPage from './pages/SideBySideProjectPage';
 import InfiniteSlidePage from './pages/InfiniteSlidePage';
 import ProjectColumnsPage from './pages/ProjectColumnsPage';
 import EducationPage from './pages/EducationPage';
+import EnterpriseExperiencePage from './pages/EnterpriseExperiencePage';
 
 const MainContent = () => {
   const landingpage = useRef()
@@ -46,6 +47,7 @@ const MainContent = () => {
             <InfiniteSlidePage infiniteSliderAnimator={infiniteSliderAnimator} />
           </div>
         </div>
+        <EnterpriseExperiencePage />
         <ProjectColumnsPage />
         <div className='relative z-[15] bg-gradient-to-b from-[#18181B] to-[#09090B]'>
           <SideBySideProjectPage nextPage={skillsPage} />
