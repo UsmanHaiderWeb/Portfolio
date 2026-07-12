@@ -1,21 +1,95 @@
-import { memo } from 'react'
+import { memo, useState, useCallback } from 'react'
 import SingleMajorProject from '../SingleMajorProject'
 
 const ProjectColumnsPage = () => {
+  const [hoveredProject, setHoveredProject] = useState(null);
+  const [tooltipPos, setTooltipPos] = useState({ left: 0, top: 0, show: false });
+
+  const handleMouseEnter = useCallback((e, proj) => {
+    const cardRect = e.currentTarget.getBoundingClientRect();
+    const tooltipWidth = 280;
+    const tooltipHeight = 150; 
+    const margin = 20;
+
+    let left = 0;
+    let top = 0;
+
+    // Try placing to the right
+    if (cardRect.right + tooltipWidth + margin <= window.innerWidth) {
+      left = cardRect.right + margin;
+      top = cardRect.top + (cardRect.height / 2) - (tooltipHeight / 2);
+    } 
+    // Try placing to the left
+    else if (cardRect.left - tooltipWidth - margin >= 0) {
+      left = cardRect.left - tooltipWidth - margin;
+      top = cardRect.top + (cardRect.height / 2) - (tooltipHeight / 2);
+    } 
+    // Try placing below
+    else if (cardRect.bottom + tooltipHeight + margin <= window.innerHeight) {
+      left = cardRect.left + (cardRect.width / 2) - (tooltipWidth / 2);
+      top = cardRect.bottom + margin;
+    } 
+    // Try placing above
+    else {
+      left = cardRect.left + (cardRect.width / 2) - (tooltipWidth / 2);
+      top = cardRect.top - tooltipHeight - margin;
+    }
+
+    // Keep it within screen bounds
+    left = Math.max(margin, Math.min(left, window.innerWidth - tooltipWidth - margin));
+    top = Math.max(margin, Math.min(top, window.innerHeight - tooltipHeight - margin));
+
+    setHoveredProject(proj);
+    setTooltipPos({ left, top, show: true });
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredProject(null);
+    setTooltipPos(prev => ({ ...prev, show: false }));
+  }, []);
+
+  const projects = [
+    { id: 1, img: "/ycdirectory.webp", des: "A Blog Application", head: 'YCDirectory (MERN)', link: 'https://ycdirectory-usman-haider.vercel.app/', techStack: "MongoDB, Express, React, Node.js, TailwindCSS" },
+    { id: 2, img: "/insta.webp", des: "A social media application", head: 'Instagram (MERN)', link: 'https://instagram-usman-haider.vercel.app/', techStack: "React, Node.js, Socket.IO, Redux" },
+    { id: 3, img: "/pinterest.webp", des: "A social media application", head: 'Pinterest (MERN)', link: '#', techStack: "React, Express, MongoDB, Cloudinary" },
+    { id: 4, img: "/brainwave.webp", des: "A Designing Clone", head: 'Brainwave (React)', link: 'https://brainwave-ochre-tau.vercel.app/', techStack: "React, Tailwind, Framer Motion" },
+    { id: 5, img: "/zentry.webp", des: "A Gaming Website", head: 'Zentry (React)', link: 'https://zentry-rosy.vercel.app/', techStack: "React, GSAP, TailwindCSS" },
+    { id: 6, img: "/whatsapp.webp", des: "A Messaging Application", head: 'WhatsApp (MERN)', link: '#', techStack: "MERN Stack, Socket.IO, JWT" }
+  ];
+
   return (
-    <div className='bg-zinc-900 relative z-[14] pt-[170px] mini:pt-[150px] mobile:pt-[130px] micro:pt-[100px]'>
+    <div 
+      className='bg-zinc-900 relative z-[14] pt-[170px] mini:pt-[150px] mobile:pt-[130px] micro:pt-[100px]'
+    >
+
+      {/* Fixed Detail Box */}
+      <div 
+        className={`fixed z-[60] bg-[#111111] text-white p-5 rounded-2xl shadow-2xl pointer-events-none border border-zinc-700/50 w-[280px] transition-all duration-300 ${tooltipPos.show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
+        style={{ left: tooltipPos.left, top: tooltipPos.top }}
+      >
+        <h4 className="font-bold text-xl">{hoveredProject?.head}</h4>
+        <p className="text-sm opacity-80 mt-1 leading-tight">{hoveredProject?.des}</p>
+        <div className="mt-4 pt-3 border-t border-zinc-700/50">
+          <span className="text-[10px] font-bold text-blue-400 uppercase tracking-widest block mb-1">Tech Stack</span>
+          <p className="text-[13px] text-zinc-300 font-medium">{hoveredProject?.techStack}</p>
+        </div>
+      </div>
+
       <div className='min-h-[500px]'>
-        <div className='flex justify-between items-center mx-[4.5vw] border-b-[blue] border-b-[1px] border-b-solid pb-7 lgtab:mb-20 tablet:mb-16 sm:mb-8'>
+        <div className='flex justify-between items-center mx-[4.5vw] border-b-[blue] border-b-[1px] border-b-solid pb-7 lgtab:mb-20 tablet:mb-16 sm:mb-8 relative z-[50]'>
           <h1 className='w-full lg:w-[50%] sm:w-[70%] lgtab:w-[85%] lg:text-[50px] lg:leading-[60px] sm:text-[50px] sm:leading-[60px] lgtab:text-[45px] lgtab:leading-[55px] tablet:text-[40px] tablet:leading-[50px] mini:text-[36px] mini:leading-[43px] mobile:text-[32px] mobile:leading-[38px] micro:text-[28px] micro:leading-[33px] font-bold mini:text-center mobile:text-center micro:text-center font-["rej"]'>My Major Projects</h1>
           <p className='hidden lg:block w-[32%] text-[19px] leading-[25px] opacity-55'>These projects primarily focuses on the javascript and react concepts and understandings.</p>
         </div>
-        <div className='md:columns-3 columns-2 mini:columns-1 mobile:columns-1 micro:columns-1 lg:w-[1000px] md:w-[calc(87vw+40px)] sm:w-[calc(80vw+40px)] lgtab:w-[calc(88vw+40px)] tablet:w-[calc(88vw+40px)] mini:w-[80vw] mobile:w-[85vw] micro:w-[85vw] mini:pt-5 mobile:pt-5 micro:pt-5 mx-auto'>
-          <SingleMajorProject img="/ycdirectory.webp" des="A Blog Application" head='YCDirectory (MERN)' link='https://ycdirectory-usman-haider.vercel.app/' />
-          <SingleMajorProject img="/insta.webp" des="A social media application" head='Instagram (MERN)' link='https://instagram-usman-haider.vercel.app/' />
-          <SingleMajorProject img="/pinterest.webp" des="A social media application" head='Pinterest (MERN)' />
-          <SingleMajorProject img="/brainwave.webp" des="A Designing Clone" head='Brainwave (React)' link='https://brainwave-ochre-tau.vercel.app/' />
-          <SingleMajorProject img="/zentry.webp" des="A Gaming Website" head='Zentry (React)' link='https://zentry-rosy.vercel.app/' />
-          <SingleMajorProject img="/whatsapp.webp" des="A Messaging Application" head='WhatsApp (MERN)' />
+        <div className='md:columns-3 columns-2 mini:columns-1 mobile:columns-1 micro:columns-1 lg:w-[1000px] md:w-[calc(87vw+40px)] sm:w-[calc(80vw+40px)] lgtab:w-[calc(88vw+40px)] tablet:w-[calc(88vw+40px)] mini:w-[80vw] mobile:w-[85vw] micro:w-[85vw] mini:pt-5 mobile:pt-5 micro:pt-5 mx-auto relative'>
+          {projects.map((proj) => (
+            <SingleMajorProject 
+              key={proj.id} 
+              {...proj} 
+              isHovered={hoveredProject?.id === proj.id}
+              onMouseEnter={(e) => handleMouseEnter(e, proj)}
+              onMouseLeave={handleMouseLeave}
+            />
+          ))}
         </div>
       </div>
     </div>
