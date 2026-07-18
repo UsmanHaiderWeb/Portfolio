@@ -8,7 +8,7 @@ const ProjectColumnsPage = () => {
   const handleMouseEnter = useCallback((e, proj) => {
     const cardRect = e.currentTarget.getBoundingClientRect();
     const tooltipWidth = 280;
-    const tooltipHeight = 150; 
+    const tooltipHeight = 150;
     const margin = 20;
 
     let left = 0;
@@ -18,17 +18,17 @@ const ProjectColumnsPage = () => {
     if (cardRect.right + tooltipWidth + margin <= window.innerWidth) {
       left = cardRect.right + margin;
       top = cardRect.top + (cardRect.height / 2) - (tooltipHeight / 2);
-    } 
+    }
     // Try placing to the left
     else if (cardRect.left - tooltipWidth - margin >= 0) {
       left = cardRect.left - tooltipWidth - margin;
       top = cardRect.top + (cardRect.height / 2) - (tooltipHeight / 2);
-    } 
+    }
     // Try placing below
     else if (cardRect.bottom + tooltipHeight + margin <= window.innerHeight) {
       left = cardRect.left + (cardRect.width / 2) - (tooltipWidth / 2);
       top = cardRect.bottom + margin;
-    } 
+    }
     // Try placing above
     else {
       left = cardRect.left + (cardRect.width / 2) - (tooltipWidth / 2);
@@ -60,12 +60,12 @@ const ProjectColumnsPage = () => {
   ];
 
   return (
-    <div 
+    <div
       className='bg-zinc-900 relative z-[14] pt-[170px] mini:pt-[150px] mobile:pt-[130px] micro:pt-[100px]'
     >
 
       {/* Fixed Detail Box */}
-      <div 
+      <div
         className={`fixed z-[60] bg-[#111111] text-white p-5 rounded-2xl shadow-2xl pointer-events-none border border-zinc-700/50 w-[280px] transition-all duration-300 ${tooltipPos.show ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}
         style={{ left: tooltipPos.left, top: tooltipPos.top }}
       >
@@ -82,11 +82,11 @@ const ProjectColumnsPage = () => {
           <h1 className='w-full lg:w-[50%] sm:w-[70%] lgtab:w-[85%] lg:text-[50px] lg:leading-[60px] sm:text-[50px] sm:leading-[60px] lgtab:text-[45px] lgtab:leading-[55px] tablet:text-[40px] tablet:leading-[50px] mini:text-[36px] mini:leading-[43px] mobile:text-[32px] mobile:leading-[38px] micro:text-[28px] micro:leading-[33px] font-bold mini:text-center mobile:text-center micro:text-center font-["rej"]'>My Major Projects</h1>
           <p className='hidden lg:block w-[32%] text-[19px] leading-[25px] opacity-55'>These projects primarily focuses on the javascript and react concepts and understandings.</p>
         </div>
-        <div className='md:columns-3 columns-2 mini:columns-1 mobile:columns-1 micro:columns-1 lg:w-[1000px] md:w-[calc(87vw+40px)] sm:w-[calc(80vw+40px)] lgtab:w-[calc(88vw+40px)] tablet:w-[calc(88vw+40px)] mini:w-[80vw] mobile:w-[85vw] micro:w-[85vw] mini:pt-5 mobile:pt-5 micro:pt-5 mx-auto relative'>
+        <div className='md:columns-3 columns-2 mini:columns-1 mobile:columns-1 micro:columns-1 lg:w-[1000px] md:w-[calc(87vw+40px)] sm:w-[calc(80vw+40px)] lgtab:w-[calc(88vw+40px)] tablet:w-[calc(88vw+40px)] mini:w-[80vw] mobile:w-[85vw] micro:w-[85vw] pt-5 mx-auto relative'>
           {projects.map((proj) => (
-            <SingleMajorProject 
-              key={proj.id} 
-              {...proj} 
+            <SingleMajorProject
+              key={proj.id}
+              {...proj}
               isHovered={hoveredProject?.id === proj.id}
               onMouseEnter={(e) => handleMouseEnter(e, proj)}
               onMouseLeave={handleMouseLeave}
