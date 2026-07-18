@@ -51,11 +51,11 @@ const ProjectColumnsPage = () => {
   const projects = [
     { id: 1, img: "/job/ticketly-user.png", des: "Event discovery & ticketing platform", head: 'Ticketly (User Platform)', link: 'https://ticketly.pk', techStack: "Next.js, RTK Query, Firebase, Custom NPM Package, Flask, Domain Driven Design, Socket.IO, Apple Wallet PassKit, External Fintech Services For Payments" },
     { id: 2, img: "/job/ticketly-bussiness.png", des: "Organiser dashboard for events, registrations & payouts", head: 'Ticketly (Organiser Portal)', link: 'https://business.ticketly.pk/', techStack: "Next.js, RTK Query, Firebase, Custom NPM Package, Flask, Domain Driven Design, TipTap, React PDF, External Fintech Services For Payments" },
-    { id: 3, img: "/job/ai-hedge.png", des: "Node-based AI workspace for live crypto market analysis", head: 'ASTRA (AI Hedge Fund)', link: 'https://hedge-scratch.vercel.app', techStack: "React, Node.js, WebSockets" },
-    { id: 4, img: "/ycdirectory.webp", des: "A Blog Application", head: 'YCDirectory (MERN)', link: 'https://ycdirectory-usman-haider.vercel.app/', techStack: "MongoDB, Express, React, Node.js, TailwindCSS" },
-    { id: 5, img: "/insta.webp", des: "A social media application", head: 'Instagram (MERN)', link: 'https://instagram-usman-haider.vercel.app/', techStack: "React, Node.js, Socket.IO, Redux" },
-    { id: 6, img: "/brainwave.webp", des: "A Designing Clone", head: 'Brainwave (React)', link: 'https://brainwave-ochre-tau.vercel.app/', techStack: "React, Tailwind, Framer Motion" },
-    { id: 7, img: "/zentry.webp", des: "A Gaming Website", head: 'Zentry (React)', link: 'https://zentry-rosy.vercel.app/', techStack: "React, GSAP, TailwindCSS" }
+    { id: 3, img: "/job/ai-hedge.png", des: "Node-based AI workspace for live crypto market analysis", head: 'ASTRA (AI Hedge Fund)', link: 'https://hedge-scratch.vercel.app', techStack: "React, TypeScript, React Flow, TanStack Query, shadcn/ui, TailwindCSS, FastAPI, OpenAI, Binance API, yfinance, Pandas, MySQL" },
+    { id: 4, img: "/ycdirectory.webp", des: "A Blog Application", head: 'YCDirectory (MERN)', link: 'https://ycdirectory-usman-haider.vercel.app/', techStack: "React, TypeScript, GraphQL (Apollo), Clerk Auth, Redux Toolkit, TanStack Query, Socket.IO, Express, MongoDB, Cloudinary, TailwindCSS" },
+    { id: 5, img: "/insta.webp", des: "A social media application", head: 'Instagram (MERN)', link: 'https://instagram-usman-haider.vercel.app/', techStack: "React, Redux Toolkit, GSAP, Framer Motion, Express, MongoDB, Cloudinary, JWT, Resend, TailwindCSS" },
+    { id: 6, img: "/brainwave.webp", des: "A Designing Clone", head: 'Brainwave (React)', link: 'https://brainwave-ochre-tau.vercel.app/', techStack: "React, GSAP, Framer Motion, Locomotive Scroll, React Router, TailwindCSS" },
+    { id: 7, img: "/zentry.webp", des: "A Gaming Website", head: 'Zentry (React)', link: 'https://zentry-rosy.vercel.app/', techStack: "React, GSAP, React Parallax Tilt, React Use, TailwindCSS" }
   ];
 
   return (
