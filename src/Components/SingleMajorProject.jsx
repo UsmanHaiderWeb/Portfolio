@@ -28,8 +28,8 @@ const SingleMajorProject = ({ img, head, des, link = '#', isHovered, onMouseEnte
       onMouseLeave={onMouseLeave}
     >
       <a href={link} ref={project} target='_blank' rel="noreferrer" className='block h-full'>
-        <h5 className="font-semibold text-lg">{head || 'YCDirectory (MERN)'}</h5>
-        <p className='text-[14px] opacity-70'>{des || 'A Blog Application'}</p>
+        <h5 className="font-semibold tracking-wider text-lg">{head || 'YCDirectory (MERN)'}</h5>
+        <p className='text-[14px] tracking-wider opacity-70'>{des || 'A Blog Application'}</p>
         <div className="overflow-hidden mt-2 rounded-lg">
           <img src={img} alt={img} className={`rounded-lg lg:w-full md:w-full sm:w-full lgtab:w-full tablet:w-full mini:w-full mobile:w-full micro:w-full h-auto max-h-[600px] object-cover object-top transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`} />
         </div>
