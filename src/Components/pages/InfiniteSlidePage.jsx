@@ -21,13 +21,15 @@ const InfiniteSlidePage = (i) => {
         end: "top 10%"
       }
     })
-    const tl = gsap.timeline({scrollTrigger: {
-      trigger: i.infiniteSliderAnimator.current,
-      scroller :"body",
-      start: "top 0",
-      end: "top -100%",
-      scrub: 1,
-    }})
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: i.infiniteSliderAnimator.current,
+        scroller: "body",
+        start: "top 0",
+        end: "top -100%",
+        scrub: 1,
+      }
+    })
     tl.to(line1.current, {
       x: '-15%'
     }, "same Line")
@@ -44,27 +46,27 @@ const InfiniteSlidePage = (i) => {
   return (<>
     <div className='absolute left-10 bottom-5 mobile:left-5 micro:left-3 mobile:bottom-5 opacity-75'>
       <h4 className='font-["rej"] text-[20px]'>Usman Haider</h4>
-      <p className='w-80 mobile:w-64 micro:w-[80vw] micro:text-[15px] sm:my-2'>I am a web developer, seeking for an internship to start my job career. I am very dedicated to my tasks.</p>
+      <p className='w-80 mobile:w-64 micro:w-[80vw] micro:text-[15px] sm:my-2'>I am an experienced Full Stack Engineer specializing in scalable cloud-native backend systems and complex React frontends. I am open to work!</p>
     </div>
     <div className='w-full flex justify-center items-center flex-wrap relative tablet:-translate-y-4 mini:-translate-y-4'>
       <h2 className='w-[300px] micro:w-[250px] text-center text-[25px] leading-[30px] micro:text-[22px] micro:leading-[27px] -translate-y-6'>
         I'm a modern web developer, trying my best
       </h2>
       <div>
-        <div ref={sliderCon} className='origin-center bg-zinc-950'>
-          <div ref={line1} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%]'>
+        <div ref={sliderCon} className='origin-center bg-zinc-950 will-change-transform'>
+          <div ref={line1} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%] will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line2} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[-15%]'>
+          <div ref={line2} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[-15%] will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line3} className='flex justify-start items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3'>
+          <div ref={line3} className='flex justify-start items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
-          <div ref={line4} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%]'>
+          <div ref={line4} className='flex justify-center items-center flex-shrink-0 flex-nowrap overflow-hidden gap-x-5 mobile:gap-x-4 micro:gap-x-3 translate-x-[15%] will-change-transform'>
             <Page2InfiniteSlider />
             <Page2InfiniteSlider />
           </div>
