@@ -19,7 +19,7 @@ const MainContent = () => {
   gsap.registerPlugin(ScrollTrigger)
 
   useGSAP(() => {
-    gsap.fromTo(landingpage.current, 
+    gsap.fromTo(landingpage.current,
       { clipPath: "circle(99.9% at 50% 50%)" },
       {
         clipPath: "circle(0% at 50% 50%)",
@@ -52,7 +52,7 @@ const MainContent = () => {
         </div>
         <EnterpriseExperiencePage />
         <ProjectColumnsPage />
-        <div className='relative z-[15] bg-gradient-to-b from-[#18181B] to-[#09090B]'>
+        <div className='relative z-[15] bg-[#09090B]'>
           <SideBySideProjectPage nextPage={skillsPage} />
         </div>
         <div className='relative z-[18] w-full min-h-screen bg-[#09090B]'>

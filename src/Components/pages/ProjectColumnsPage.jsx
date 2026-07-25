@@ -63,7 +63,7 @@ const ProjectColumnsPage = () => {
 
   return (
     <div
-      className='bg-zinc-900 relative z-[14] pt-[170px] mini:pt-[150px] mobile:pt-[130px] micro:pt-[100px]'
+      className='bg-[#09090B] relative z-[14] pt-[170px] mini:pt-[150px] mobile:pt-[130px] micro:pt-[100px]'
     >
 
       {/* Fixed Detail Box */}
